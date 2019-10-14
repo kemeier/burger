@@ -8,6 +8,7 @@ var PORT = process.env.PORT || 3000;
 
 var app = express();
 app.use(express.static(__dirname + '/public'));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(bodyParser.urlencoded({
     extended: false
@@ -15,14 +16,14 @@ app.use(bodyParser.urlencoded({
 
 app.use(methodOverride('_method'));
 
-
 app.engine('handlebars', exphbs({
     defaultLayout: 'main'
 }));
+
 app.set('view engine', 'handlebars');
 
 app.use('/', routes);
 
-app.set.listen(PORT, function() {
+app.listen(PORT, function() {
     console.log("Listening at " + PORT)
 });
