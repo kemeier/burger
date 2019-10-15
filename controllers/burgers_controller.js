@@ -1,11 +1,13 @@
+//reference to express and express.Router
 var express = require('express');
 var router = express.Router();
 var burger = require('../models/burger.js');
 
+//base route
 router.get('/', function(req, res)  {
     burger.all(function(burger_data)  {
         console.log(burger_data);
-        res.render('index');
+        res.render('index',{burger_data});
     })
 })
 

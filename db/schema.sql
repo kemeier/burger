@@ -1,5 +1,5 @@
-CREATE DATABASE burgers;
-USE burgers;
+CREATE DATABASE burgers_js;
+USE burgers_js;
 
 CREATE TABLE burgers	(
 	id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,

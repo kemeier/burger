@@ -1,4 +1,6 @@
 var orm = require("../config/orm.js");
+
+//methods that modify orm for use with burgers database
 var burger = {
     all: function (cb) {
         orm.all('burgers',function (res) {
