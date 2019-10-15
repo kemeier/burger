@@ -6,7 +6,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/burger', function (req, res)   {
-    burger.selectALL(function (burger_data) {
+    burger.selectAll(function (burger_data) {
         res.render('index',  { burger_data });
     });
 });
