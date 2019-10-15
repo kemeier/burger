@@ -4,7 +4,7 @@ var connection = mysql.createConnection ({
     host: "localhost",
     user: "root",
     password: "9tachyons",
-    database: "burgers"
+    database: "burgers_db"
 });
 
 connection.connect(function(err)    {
@@ -12,7 +12,7 @@ connection.connect(function(err)    {
         console.error("error connecting: " + err.stack);
         return;
     }
-    console.log("connected as id: " + connection.threadID);
+    console.log("connected as id: " + connection.threadId);
 });
 
 module.exports = connection;

@@ -1,35 +1,26 @@
-var connection = require('../config/connection.js');
+var connection = require('./connection.js');
 
 var orm = {
-    selectAll: function (cb)    {
-        var queryString = "SELECT * FROM burgers";
-        connection.query(queryString, function(err, res)    {
-            if (err)    {
-                throw err;
-            }
-            cb(res);
-        });
+    all: function (tableInput, cb)    {
+        connection.query('SELECT * FROM '+tableInput+';', function(err, result)    {
+            if (err) throw err;
+            cb(result);
+        })
     },
 
-    insertOne: function (burger, cb)   {
-        var queryString = "INSERT INTO burgers (burger_name) VALUES (?)";
-        connection.query(queryString, [burger], function (err, res) {
-            if (err)    {
-                throw err;
-            }
-            cb(res);
-        });
+    update: function(tableInput, condition, cb) {
+        connection.query('UPDATE '+tableInput+' SET devoured=true WHERE id='+condition+';', function(err,result)    {
+            if(err)throw err;
+            cb(result);
+        })
     },
-
-    updateOne: function  (id, cb)  {
-        var queryString = "UPDATE burgers SET devoured = true where ID = ?";
-        connection.query(queryString, [id], function (err, res) {
-            if (err)    {
-                throw err;
-            }
-            cb(res);
-        });
+    create: function(tableInput,val,cb) {
+        connection.query('INSERT INTO '+tableInput+" (burger_name) VALUES ('"+val+"');", function(err,result)    {
+            if(err) throw err;
+            cb(result);
+        })
     }
 };
 
+    
 module.exports = orm;
